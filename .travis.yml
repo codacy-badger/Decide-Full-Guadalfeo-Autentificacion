@@ -13,10 +13,17 @@ python:
   - "2.7"
   - "3.6"
 env:
+  - DJANGO_VERSION=1.11.29
   - DJANGO_VERSION=2.0
   - DJANGO_VERSION=2.2.6
+matrix:
+  exclude:
+    - python: "2.7"
+      env: DJANGO_VERSION=2.0
+    - python: "2.7"
+      env: DJANGO_VERSION=2.2.6
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip -q install Django==1.11.29; else pip install -q Django==$DJANGO_VERSION;
+  - pip install -q Django==$DJANGO_VERSION;
   - pip install -r requirements.txt
   - pip install codacy-coverage
 script:
