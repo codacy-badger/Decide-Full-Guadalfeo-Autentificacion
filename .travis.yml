@@ -11,12 +11,13 @@ before_script:
 language: python
 python:
   - "2.7"
-  - "3.3"
+  - "3.3.0"
   - "3.6"
 env:
   - DJANGO_VERSION=2.0
   - DJANGO_VERSION=2.2.6
 install:
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install Django==1.11.29; fi
   - pip install -q Django==$DJANGO_VERSION
   - pip install -r requirements.txt
   - pip install codacy-coverage
