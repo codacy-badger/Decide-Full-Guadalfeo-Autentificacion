@@ -10,18 +10,10 @@ before_script:
   - psql -U postgres -c "ALTER USER decide CREATEDB"
 language: python
 python:
-  - "2.7"
   - "3.6"
 env:
-  - DJANGO_VERSION=1.11.29
   - DJANGO_VERSION=2.0
   - DJANGO_VERSION=2.2.6
-matrix:
-  exclude:
-    - python: "2.7"
-      env: DJANGO_VERSION=2.0
-    - python: "2.7"
-      env: DJANGO_VERSION=2.2.6
 install:
   - pip install -q Django==$DJANGO_VERSION;
   - pip install -r requirements.txt
